@@ -1,0 +1,13 @@
+INT(1, 100, t) NEWLINE
+
+REP(t)
+    NEWLINE
+    INT(1, 200, r) SPACE INT(1, 200, c) NEWLINE
+    INT(1, 700, n) NEWLINE
+
+    REP(n)
+        INT(0, r - 1) SPACE INT(0, c - 1) NEWLINE
+    END
+
+    INT(1, 2000) SPACE INT(1, 200) NEWLINE
+END
