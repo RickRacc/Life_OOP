@@ -1,0 +1,24 @@
+@startuml LifeFredkin
+Life *- "*" FredkinCell
+
+class Life<T> {
+    - vector<vector<T>> _prev_grid
+    - vector<vector<T>> _next_grid
+    - size_t _rows
+    - size_t _cols
+    + Life(size_t rows, size_t cols)
+    + eval() : void
+    + initialize_cell(size_t, size_t, const T&) : void
+    + print_generation(int) : void
+}
+
+class FredkinCell {
+    - bool _alive
+    - size_t _age
+    + FredkinCell(bool alive, size_t age)
+    + evolve(int) : void
+    + is_neighbor(int, int) : bool
+    + display() : char
+    + should_mutate() : bool
+}
+@enduml

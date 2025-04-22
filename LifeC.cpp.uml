@@ -1,0 +1,53 @@
+@startuml LifeCell
+Life *- "*" Cell
+Cell *-- "1" AbstractCell
+AbstractCell <|-- FredkinCell
+AbstractCell <|-- ConwayCell
+
+class Life<T> {
+    - vector<vector<T>> _prev_grid
+    - vector<vector<T>> _next_grid
+    - size_t _rows
+    - size_t _cols
+    + Life(size_t rows, size_t cols)
+    + eval() : void
+    + initialize_cell(size_t, size_t, const T&) : void
+    + print_generation(int) : void
+}
+
+class Cell {
+    - AbstractCell* _p
+    + Cell()
+    + Cell(AbstractCell*)
+    + evolve(int) : void
+    + is_neighbor(int, int) : bool
+    + update_neighbors(...) : void
+    + display() : char
+    + clone() : Cell
+}
+
+abstract class AbstractCell {
+    - bool _alive
+    + clone() : AbstractCell*
+    + evolve(int) : void
+    + is_neighbor(int, int) : bool
+    + display() : char
+    + should_mutate() : bool
+}
+
+class FredkinCell {
+    - size_t _age
+    + FredkinCell(bool, size_t)
+    + evolve(int) : void
+    + is_neighbor(int, int) : bool
+    + display() : char
+    + should_mutate() : bool
+}
+
+class ConwayCell {
+    + ConwayCell(bool)
+    + evolve(int) : void
+    + is_neighbor(int, int) : bool
+    + display() : char
+}
+@enduml

@@ -1,0 +1,22 @@
+@startuml LifeConway
+Life *- "*" ConwayCell
+
+class Life<T> {
+    - vector<vector<T>> _prev_grid
+    - vector<vector<T>> _next_grid
+    - size_t _rows
+    - size_t _cols
+    + Life(size_t rows, size_t cols)
+    + eval() : void
+    + initialize_cell(size_t, size_t, const T&) : void
+    + print_generation(int) : void
+}
+
+class ConwayCell {
+    - bool _alive
+    + ConwayCell(bool alive)
+    + evolve(int) : void
+    + is_neighbor(int, int) : bool
+    + display() : char
+}
+@enduml
