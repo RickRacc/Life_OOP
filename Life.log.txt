@@ -1,0 +1,29 @@
+commit 3f8dfe9f7689a9947c4d9f4ac2ae3d934726ad94
+Author: RickRacc <rakesh.p.singh2030@gmail.com>
+Date:   Wed Apr 23 12:01:04 2025 -0500
+
+    Added generated Doxygen documentation
+
+commit 6fa2a57c7abd3ac636d22986a1b4caabf2a050ba
+Author: RickRacc <rakesh.p.singh2030@gmail.com>
+Date:   Wed Apr 23 08:19:45 2025 -0500
+
+    Added test cases and CI configuration
+
+commit aa8d9231d9b5c4243c2932713680436b20f13bf1
+Author: RickRacc <rakesh.p.singh2030@gmail.com>
+Date:   Tue Apr 22 23:06:48 2025 -0500
+
+    Added run files
+
+commit b3f4ec587aec44598898971b8896e40b0792d17c
+Author: RickRacc <rakesh.p.singh2030@gmail.com>
+Date:   Mon Apr 21 22:39:11 2025 -0500
+
+    Added Life.hpp, UMLs, SVGs, and test file
+
+commit f4ea08050a5e835d99fa79b05be4a38f44bef794
+Author: RickRacc <rakesh.p.singh2030@gmail.com>
+Date:   Thu Apr 17 12:04:23 2025 -0500
+
+    Initial setup: ignore, Makefile, README, ctd, Doxyfile
