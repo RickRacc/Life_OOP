@@ -1,0 +1,156 @@
+\doxysection{Fredkin\+Cell Class Reference}
+\hypertarget{classFredkinCell}{}\label{classFredkinCell}\index{FredkinCell@{FredkinCell}}
+
+
+Fredkin cell with orthogonal neighbor logic and aging/mutation.  
+
+
+
+
+{\ttfamily \#include $<$Life.\+hpp$>$}
+
+Inheritance diagram for Fredkin\+Cell\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classFredkinCell}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFredkinCell_a0dd9066d9f8256b452ee145c0d0e273a}{Fredkin\+Cell}} (bool alive=false, size\+\_\+t age=0)
+\item 
+\mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classFredkinCell_a665527eba58dbaffe33824f3333f55ae}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clone this cell polymorphically. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classFredkinCell_a1f16d24e660d8084760771bba1fbc920}{evolve}} (int live\+\_\+neighbors) override
+\begin{DoxyCompactList}\small\item\em Applies cell-\/specific evolution rules. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFredkinCell_a0a6ef7239e0c90f34087573cb4eed889}{is\+\_\+neighbor}} (int dr, int dc) const override
+\begin{DoxyCompactList}\small\item\em Checks if a direction (dr, dc) is a valid neighbor. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classFredkinCell_a0d2d99a72c5f47d8f508f02c83dcc0b5}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Returns a character representing the current cell state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFredkinCell_a4696c1fc7838b2fedb86df0d29db166b}{should\+\_\+mutate}} () const override
+\begin{DoxyCompactList}\small\item\em Fredkin-\/specific\+: should this cell mutate into Conway? \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{Abstract\+Cell}} (bool alive=false)
+\item 
+virtual \mbox{\hyperlink{classAbstractCell_a6d8ce67b93514f1fc2f564a7bb09cf85}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Cell}} ()=default
+\item 
+{\footnotesize template$<$typename Grid\+Type$>$ }\\void \mbox{\hyperlink{classAbstractCell_a649a4975904c1f32a4ec47682e93cb5e}{update\+\_\+neighbors}} (const vector$<$ vector$<$ Grid\+Type $>$ $>$ \&grid, vector$<$ vector$<$ int $>$ $>$ \&count\+\_\+grid, int row, int col) const
+\begin{DoxyCompactList}\small\item\em Updates neighbor count for valid neighbor directions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\+\_\+age}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\+\_\+alive}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Fredkin cell with orthogonal neighbor logic and aging/mutation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classFredkinCell_a0dd9066d9f8256b452ee145c0d0e273a}\index{FredkinCell@{FredkinCell}!FredkinCell@{FredkinCell}}
+\index{FredkinCell@{FredkinCell}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{FredkinCell()}{FredkinCell()}}
+{\footnotesize\ttfamily \label{classFredkinCell_a0dd9066d9f8256b452ee145c0d0e273a} 
+Fredkin\+Cell\+::\+Fredkin\+Cell (\begin{DoxyParamCaption}\item[{bool}]{alive}{ = {\ttfamily false}, }\item[{size\+\_\+t}]{age}{ = {\ttfamily 0}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classFredkinCell_a665527eba58dbaffe33824f3333f55ae}\index{FredkinCell@{FredkinCell}!clone@{clone}}
+\index{clone@{clone}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{classFredkinCell_a665527eba58dbaffe33824f3333f55ae} 
+\mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}} \texorpdfstring{$\ast$}{*} Fredkin\+Cell\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone this cell polymorphically. 
+
+
+
+Implements \mbox{\hyperlink{classAbstractCell_aff625f2dcd4561f0c3bd27186fe03841}{Abstract\+Cell}}.
+
+\Hypertarget{classFredkinCell_a0d2d99a72c5f47d8f508f02c83dcc0b5}\index{FredkinCell@{FredkinCell}!display@{display}}
+\index{display@{display}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{classFredkinCell_a0d2d99a72c5f47d8f508f02c83dcc0b5} 
+char Fredkin\+Cell\+::display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a character representing the current cell state. 
+
+
+
+Implements \mbox{\hyperlink{classAbstractCell_ae0f08b240e7d8f3fdc883d05662d3d51}{Abstract\+Cell}}.
+
+\Hypertarget{classFredkinCell_a1f16d24e660d8084760771bba1fbc920}\index{FredkinCell@{FredkinCell}!evolve@{evolve}}
+\index{evolve@{evolve}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{evolve()}{evolve()}}
+{\footnotesize\ttfamily \label{classFredkinCell_a1f16d24e660d8084760771bba1fbc920} 
+void Fredkin\+Cell\+::evolve (\begin{DoxyParamCaption}\item[{int}]{live\+\_\+neighbors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Applies cell-\/specific evolution rules. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em live\+\_\+neighbors} & Number of live neighbors. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classAbstractCell_a8bbf21a078913b58782aef24fbb2a42d}{Abstract\+Cell}}.
+
+\Hypertarget{classFredkinCell_a0a6ef7239e0c90f34087573cb4eed889}\index{FredkinCell@{FredkinCell}!is\_neighbor@{is\_neighbor}}
+\index{is\_neighbor@{is\_neighbor}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{is\_neighbor()}{is\_neighbor()}}
+{\footnotesize\ttfamily \label{classFredkinCell_a0a6ef7239e0c90f34087573cb4eed889} 
+bool Fredkin\+Cell\+::is\+\_\+neighbor (\begin{DoxyParamCaption}\item[{int}]{dr}{, }\item[{int}]{dc}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if a direction (dr, dc) is a valid neighbor. 
+
+
+
+Implements \mbox{\hyperlink{classAbstractCell_ae1248a23887bfd6e35fd36c5335d76df}{Abstract\+Cell}}.
+
+\Hypertarget{classFredkinCell_a4696c1fc7838b2fedb86df0d29db166b}\index{FredkinCell@{FredkinCell}!should\_mutate@{should\_mutate}}
+\index{should\_mutate@{should\_mutate}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{should\_mutate()}{should\_mutate()}}
+{\footnotesize\ttfamily \label{classFredkinCell_a4696c1fc7838b2fedb86df0d29db166b} 
+bool Fredkin\+Cell\+::should\+\_\+mutate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Fredkin-\/specific\+: should this cell mutate into Conway? 
+
+
+
+Reimplemented from \mbox{\hyperlink{classAbstractCell_a83a30c72ccda54262535bfa15ff1e43a}{Abstract\+Cell}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}\index{FredkinCell@{FredkinCell}!\_age@{\_age}}
+\index{\_age@{\_age}!FredkinCell@{FredkinCell}}
+\doxysubsubsection{\texorpdfstring{\_age}{\_age}}
+{\footnotesize\ttfamily \label{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf} 
+size\+\_\+t Fredkin\+Cell\+::\+\_\+age\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Life_8hpp}{Life.\+hpp}}\end{DoxyCompactItemize}

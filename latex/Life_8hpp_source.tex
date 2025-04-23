@@ -1,0 +1,240 @@
+\doxysection{Life.\+hpp}
+\hypertarget{Life_8hpp_source}{}\label{Life_8hpp_source}\mbox{\hyperlink{Life_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <utility>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <cctype>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCell}{Cell}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}\ \{}
+\DoxyCodeLine{00017\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}(\textcolor{keywordtype}{bool}\ alive\ =\ \textcolor{keyword}{false})\ :\ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}(alive)\ \{\}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classAbstractCell_a6d8ce67b93514f1fc2f564a7bb09cf85}{\string~AbstractCell}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}*\ \mbox{\hyperlink{classAbstractCell_aff625f2dcd4561f0c3bd27186fe03841}{clone}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAbstractCell_a8bbf21a078913b58782aef24fbb2a42d}{evolve}}(\textcolor{keywordtype}{int}\ live\_neighbors)\ =\ 0;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Gr\textcolor{keywordtype}{id}Type>}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAbstractCell_a649a4975904c1f32a4ec47682e93cb5e}{update\_neighbors}}(\textcolor{keyword}{const}\ vector<vector<GridType>>\&\ grid,}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<vector<int>>\&\ count\_grid,\ \textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 8\ possible\ neighbor\ directions\ (for\ Conway)}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ vector<pair<int,\ int>>\ offsets\ =\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{-\/1,-\/1\},\ \{-\/1,0\},\ \{-\/1,1\},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 0,-\/1\},\ \ \ \ \ \ \ \ \ \{\ 0,1\},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \{\ 1,-\/1\},\ \{\ 1,0\},\ \{\ 1,1\}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\&\ [dr,\ dc]\ :\ offsets)\ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ni\ =\ row\ +\ dr,\ nj\ =\ col\ +\ dc;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Let\ the\ neighbor\ cell\ decide\ if\ this\ direction\ counts}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (grid[ni][nj].\mbox{\hyperlink{classAbstractCell_ae1248a23887bfd6e35fd36c5335d76df}{is\_neighbor}}(-\/dr,\ -\/dc))\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ count\_grid[ni][nj]++;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classAbstractCell_ae1248a23887bfd6e35fd36c5335d76df}{is\_neighbor}}(\textcolor{keywordtype}{int}\ dr,\ \textcolor{keywordtype}{int}\ dc)\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classAbstractCell_ae0f08b240e7d8f3fdc883d05662d3d51}{display}}()\ \textcolor{keyword}{const}\ =\ 0;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classAbstractCell_a83a30c72ccda54262535bfa15ff1e43a}{should\_mutate}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{00077\ \};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f}{ConwayCell}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}\ \{}
+\DoxyCodeLine{00083\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f}{ConwayCell}}(\textcolor{keywordtype}{bool}\ alive\ =\ \textcolor{keyword}{false})\ :\ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}(alive)\ \{\}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \mbox{\hyperlink{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f}{ConwayCell}}*\ \mbox{\hyperlink{classConwayCell_ac6fe4cb99bdde233593dbcb528b61a25}{clone}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f}{ConwayCell}}(\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}});}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classConwayCell_a62ed3a1445b136e07fc0ff1dd5880923}{evolve}}(\textcolor{keywordtype}{int}\ live\_neighbors)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Conway\ rules:}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ alive\ →\ stays\ alive\ with\ 2\ or\ 3\ neighbors}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ dead\ \ →\ becomes\ alive\ with\ exactly\ 3\ neighbors}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}})}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}\ =\ (live\_neighbors\ ==\ 2\ ||\ live\_neighbors\ ==\ 3);}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}\ =\ (live\_neighbors\ ==\ 3);}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classConwayCell_af135931ddf0ff3dd398b7f85d2392e9d}{is\_neighbor}}(\textcolor{keywordtype}{int}\ dr,\ \textcolor{keywordtype}{int}\ dc)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ All\ 8\ directions\ are\ valid\ neighbors}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ !(dr\ ==\ 0\ \&\&\ dc\ ==\ 0);}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classConwayCell_aa730e3948f9a4f026109c0cbed464012}{display}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}\ ?\ \textcolor{charliteral}{'*'}\ :\ \textcolor{charliteral}{'.'};}
+\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \};}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00113\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classFredkinCell_a0dd9066d9f8256b452ee145c0d0e273a}{FredkinCell}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}\ \{}
+\DoxyCodeLine{00114\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00118\ \ \ \ \ \mbox{\hyperlink{classFredkinCell_a0dd9066d9f8256b452ee145c0d0e273a}{FredkinCell}}(\textcolor{keywordtype}{bool}\ alive\ =\ \textcolor{keyword}{false},\ \textcolor{keywordtype}{size\_t}\ age\ =\ 0)\ :\ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}(alive),\ \mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}}(age)\ \{\}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{AbstractCell}}*\ \mbox{\hyperlink{classFredkinCell_a665527eba58dbaffe33824f3333f55ae}{clone}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classFredkinCell_a0dd9066d9f8256b452ee145c0d0e273a}{FredkinCell}}(\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}},\ \mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}});}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classFredkinCell_a1f16d24e660d8084760771bba1fbc920}{evolve}}(\textcolor{keywordtype}{int}\ live\_neighbors)\textcolor{keyword}{\ override\ }\{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}})\ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dies\ if\ 0,\ 2,\ or\ 4\ neighbors}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}\ =\ !(live\_neighbors\ ==\ 0\ ||\ live\_neighbors\ ==\ 2\ ||\ live\_neighbors\ ==\ 4);}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}})\ ++\mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}};\ \ \textcolor{comment}{//\ Age\ increases\ only\ if\ it\ survives}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Comes\ alive\ with\ 1\ or\ 3\ neighbors}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}\ =\ (live\_neighbors\ ==\ 1\ ||\ live\_neighbors\ ==\ 3);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFredkinCell_a0a6ef7239e0c90f34087573cb4eed889}{is\_neighbor}}(\textcolor{keywordtype}{int}\ dr,\ \textcolor{keywordtype}{int}\ dc)\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fredkin\ cells\ only\ consider\ orthogonal\ directions\ (up/down/left/right)}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ abs(dr)\ +\ abs(dc)\ ==\ 1;}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classFredkinCell_a0d2d99a72c5f47d8f508f02c83dcc0b5}{display}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}})\ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}}\ <\ 10\ ?\ \textcolor{charliteral}{'0'}\ +\ \mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}}\ :\ \textcolor{charliteral}{'+'});\ \ \textcolor{comment}{//\ age-\/based\ display}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{charliteral}{'-\/'};}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classFredkinCell_a4696c1fc7838b2fedb86df0d29db166b}{should\_mutate}}()\textcolor{keyword}{\ const\ override\ }\{}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mutate\ to\ Conway\ if\ age\ reaches\ exactly\ 2}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\_alive}}\ \&\&\ \mbox{\hyperlink{classFredkinCell_a1494909937d00ab807c12e8d099ac8bf}{\_age}}\ ==\ 2;}
+\DoxyCodeLine{00148\ \ \ \ \ \}}
+\DoxyCodeLine{00149\ \};}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\ \{}
+\DoxyCodeLine{00155\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00156\ \ \ \ \ \mbox{\hyperlink{classAbstractCell}{AbstractCell}}*\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00159\ \ \ \ \ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}()\ :\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}(new\ \mbox{\hyperlink{classFredkinCell}{FredkinCell}}(false))\ \{\}\ \ \textcolor{comment}{//\ default\ to\ dead\ Fredkin}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keyword}{explicit}\ \mbox{\hyperlink{classCell_ad9482a1839abb1fd7562386d3b25c7a2}{Cell}}(\mbox{\hyperlink{classAbstractCell}{AbstractCell}}*\ cell)\ :\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}(cell)\ \{\}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \mbox{\hyperlink{classCell_a5f7e1f953c71c7421726dc6af263e467}{Cell}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\&\ other)\ :\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}(other.\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ ?\ other.\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>\mbox{\hyperlink{classCell_a124fb1c1ebe267c1a1e49b236157f57e}{clone}}()\ :\ nullptr)\ \{\}}
+\DoxyCodeLine{00163\ \ \ \ \ \mbox{\hyperlink{classCell_aca0143e93262f9074cb81af03824a06c}{Cell}}(\mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\&\&\ other)\ noexcept\ :\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}(other.\_p)\ \{\ other.\_p\ =\ \textcolor{keyword}{nullptr};\ \}}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\&\ \mbox{\hyperlink{classCell_ac1c53fcae0c0be453d0312310ed80fc9}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\&\ other)\ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}};}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ =\ other.\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ ?\ other.\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>\mbox{\hyperlink{classAbstractCell_aff625f2dcd4561f0c3bd27186fe03841}{clone}}()\ :\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00171\ \ \ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\&\ \mbox{\hyperlink{classCell_aab521a9dfdd11440797be445495d0555}{operator=}}(\mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\&\&\ other)\ \textcolor{keyword}{noexcept}\ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ !=\ \&other)\ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}};}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ =\ other.\_p;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ other.\_p\ =\ \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ *\textcolor{keyword}{this};}
+\DoxyCodeLine{00180\ \ \ \ \ \}}
+\DoxyCodeLine{00181\ }
+\DoxyCodeLine{00182\ \ \ \ \ \mbox{\hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{\string~Cell}}()\ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}};}
+\DoxyCodeLine{00184\ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00189\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_a9bc1f8346945d3af348301783bcd4023}{evolve}}(\textcolor{keywordtype}{int}\ live\_neighbors)\ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}})\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>evolve(live\_neighbors);}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ \&\&\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>should\_mutate())\ \{}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}};}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classConwayCell}{ConwayCell}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classCell_a8c934c2810095d13296b7976ee389b41}{is\_neighbor}}(\textcolor{keywordtype}{int}\ dr,\ \textcolor{keywordtype}{int}\ dc)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ ?\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>is\_neighbor(dr,\ dc)\ :\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00199\ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ Gr\textcolor{keywordtype}{id}Type>}
+\DoxyCodeLine{00202\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classCell_aba0c745a83fa7cf5e750b61339b52a6b}{update\_neighbors}}(\textcolor{keyword}{const}\ vector<vector<GridType>>\&\ grid,}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ vector<vector<int>>\&\ count\_grid,\ \textcolor{keywordtype}{int}\ row,\ \textcolor{keywordtype}{int}\ col)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}})\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>update\_neighbors(grid,\ count\_grid,\ row,\ col);}
+\DoxyCodeLine{00205\ \ \ \ \ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{classCell_a1c8c688f186203a8a5a494853319f2cc}{display}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ ?\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>display()\ :\ \textcolor{charliteral}{'N'};}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00211\ \ \ \ \ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}\ \mbox{\hyperlink{classCell_a124fb1c1ebe267c1a1e49b236157f57e}{clone}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}}(\mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}\ ?\ \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\_p}}-\/>clone()\ :\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00213\ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00220\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00221\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classLife_a95b55e5de5ddaf332930a68cda35f87b}{Life}}\ \{}
+\DoxyCodeLine{00222\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00223\ \ \ \ \ vector<vector<T>>\ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}};}
+\DoxyCodeLine{00224\ \ \ \ \ vector<vector<T>>\ \mbox{\hyperlink{classLife_a47a1e38de2bd89f937afca66dcea2e29}{\_next\_grid}};}
+\DoxyCodeLine{00225\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ \mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\_rows}},\ \mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\_cols}};}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{classLife_a95b55e5de5ddaf332930a68cda35f87b}{Life}}(\textcolor{keywordtype}{size\_t}\ rows,\ \textcolor{keywordtype}{size\_t}\ cols)}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\_rows}}(rows),\ \mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\_cols}}(cols)}
+\DoxyCodeLine{00230\ \ \ \ \ \{}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Allocate\ padded\ grids\ (+2\ for\ top/bottom/left/right\ padding)}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}}.resize(rows\ +\ 2,\ vector<T>(cols\ +\ 2));}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLife_a47a1e38de2bd89f937afca66dcea2e29}{\_next\_grid}}.resize(rows\ +\ 2,\ vector<T>(cols\ +\ 2));}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00241\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLife_a96bbaf04a03c527bbecd2a99441d2e6a}{eval}}()\ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ vector<vector<int>>\ neighbor\_counts(\mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\_rows}}\ +\ 2,\ vector<int>(\mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\_cols}}\ +\ 2,\ 0));}
+\DoxyCodeLine{00243\ }
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Phase\ 1:\ each\ live\ cell\ updates\ its\ neighbors'\ counts}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <=\ \mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\_rows}};\ ++i)\ \{}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 1;\ j\ <=\ \mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\_cols}};\ ++j)\ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}}[i][j].update\_neighbors(\mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}},\ neighbor\_counts,\ i,\ j);}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Phase\ 2:\ apply\ evolution\ rules\ using\ neighbor\ counts}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <=\ \mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\_rows}};\ ++i)\ \{}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 1;\ j\ <=\ \mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\_cols}};\ ++j)\ \{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLife_a47a1e38de2bd89f937afca66dcea2e29}{\_next\_grid}}[i][j]\ =\ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}}[i][j];\ \ \textcolor{comment}{//\ copy\ current\ cell}}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLife_a47a1e38de2bd89f937afca66dcea2e29}{\_next\_grid}}[i][j].evolve(neighbor\_counts[i][j]);}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ }
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Swap\ current\ and\ next\ generation}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ swap(\mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}},\ \mbox{\hyperlink{classLife_a47a1e38de2bd89f937afca66dcea2e29}{\_next\_grid}});}
+\DoxyCodeLine{00261\ \ \ \ \ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00266\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLife_ab53da75756aca3360fadae37e74f06b4}{initialize\_cell}}(\textcolor{keywordtype}{size\_t}\ i,\ \textcolor{keywordtype}{size\_t}\ j,\ \textcolor{keyword}{const}\ T\&\ cell)\ \{}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}}[i\ +\ 1][j\ +\ 1]\ =\ cell;}
+\DoxyCodeLine{00268\ \ \ \ \ \}}
+\DoxyCodeLine{00269\ }
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classLife_a35d505fd771b3a915c81c71abc4fb0b1}{print\_generation}}(\textcolor{keywordtype}{int}\ gen)\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ pop\ =\ 0;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ ostringstream\ out;}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <=\ \mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\_rows}};\ ++i)\ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 1;\ j\ <=\ \mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\_cols}};\ ++j)\ \{}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ ch\ =\ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\_prev\_grid}}[i][j].display();}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out\ <<\ ch;}
+\DoxyCodeLine{00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ch\ ==\ \textcolor{charliteral}{'*'}\ ||\ isdigit(ch)\ ||\ ch\ ==\ \textcolor{charliteral}{'+'})\ ++pop;}
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \ \ \ \ out\ <<\ \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Generation\ =\ "{}}\ <<\ gen\ <<\ \textcolor{stringliteral}{"{},\ Population\ =\ "{}}\ <<\ pop\ <<\ \textcolor{stringliteral}{"{}.\(\backslash\)n"{}};}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ cout\ <<\ out.str();}
+\DoxyCodeLine{00286\ \ \ \ \ \}}
+\DoxyCodeLine{00287\ \};}
+
+\end{DoxyCode}

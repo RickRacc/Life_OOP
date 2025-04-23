@@ -1,0 +1,143 @@
+\doxysection{Cell Class Reference}
+\hypertarget{classCell}{}\label{classCell}\index{Cell@{Cell}}
+
+
+Polymorphic wrapper for cells. Supports Conway or Fredkin with mutation.  
+
+
+
+
+{\ttfamily \#include $<$Life.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCell_a394510643e8664cf12b5efaf5cb99f71}{Cell}} ()
+\item 
+\mbox{\hyperlink{classCell_ad9482a1839abb1fd7562386d3b25c7a2}{Cell}} (\mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}} \texorpdfstring{$\ast$}{*}cell)
+\item 
+\mbox{\hyperlink{classCell_a5f7e1f953c71c7421726dc6af263e467}{Cell}} (const \mbox{\hyperlink{classCell}{Cell}} \&other)
+\item 
+\mbox{\hyperlink{classCell_aca0143e93262f9074cb81af03824a06c}{Cell}} (\mbox{\hyperlink{classCell}{Cell}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{classCell}{Cell}} \& \mbox{\hyperlink{classCell_ac1c53fcae0c0be453d0312310ed80fc9}{operator=}} (const \mbox{\hyperlink{classCell}{Cell}} \&other)
+\item 
+\mbox{\hyperlink{classCell}{Cell}} \& \mbox{\hyperlink{classCell_aab521a9dfdd11440797be445495d0555}{operator=}} (\mbox{\hyperlink{classCell}{Cell}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{classCell_a9fa559f7a28e2b4336c6879ca09304d8}{\texorpdfstring{$\sim$}{\string~}\+Cell}} ()
+\item 
+void \mbox{\hyperlink{classCell_a9bc1f8346945d3af348301783bcd4023}{evolve}} (int live\+\_\+neighbors)
+\begin{DoxyCompactList}\small\item\em Evolves the underlying cell and mutates Fredkin→\+Conway if needed. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCell_a8c934c2810095d13296b7976ee389b41}{is\+\_\+neighbor}} (int dr, int dc) const
+\item 
+{\footnotesize template$<$typename Grid\+Type$>$ }\\void \mbox{\hyperlink{classCell_aba0c745a83fa7cf5e750b61339b52a6b}{update\+\_\+neighbors}} (const vector$<$ vector$<$ Grid\+Type $>$ $>$ \&grid, vector$<$ vector$<$ int $>$ $>$ \&count\+\_\+grid, int row, int col) const
+\item 
+char \mbox{\hyperlink{classCell_a1c8c688f186203a8a5a494853319f2cc}{display}} () const
+\item 
+\mbox{\hyperlink{classCell}{Cell}} \mbox{\hyperlink{classCell_a124fb1c1ebe267c1a1e49b236157f57e}{clone}} () const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classCell_af8bb6306c15463d257e4775095b2f273}{\+\_\+p}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Polymorphic wrapper for cells. Supports Conway or Fredkin with mutation. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classCell_a394510643e8664cf12b5efaf5cb99f71}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classCell_a394510643e8664cf12b5efaf5cb99f71} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_ad9482a1839abb1fd7562386d3b25c7a2}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classCell_ad9482a1839abb1fd7562386d3b25c7a2} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}} \texorpdfstring{$\ast$}{*}}]{cell}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+\Hypertarget{classCell_a5f7e1f953c71c7421726dc6af263e467}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classCell_a5f7e1f953c71c7421726dc6af263e467} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCell}{Cell}} \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_aca0143e93262f9074cb81af03824a06c}\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{Cell()}{Cell()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classCell_aca0143e93262f9074cb81af03824a06c} 
+Cell\+::\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCell}{Cell}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classCell_a9fa559f7a28e2b4336c6879ca09304d8}\index{Cell@{Cell}!````~Cell@{\texorpdfstring{$\sim$}{\string~}Cell}}
+\index{````~Cell@{\texorpdfstring{$\sim$}{\string~}Cell}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Cell()}{\string~Cell()}}
+{\footnotesize\ttfamily \label{classCell_a9fa559f7a28e2b4336c6879ca09304d8} 
+Cell\+::\texorpdfstring{$\sim$}{\string~}\+Cell (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classCell_a124fb1c1ebe267c1a1e49b236157f57e}\index{Cell@{Cell}!clone@{clone}}
+\index{clone@{clone}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{classCell_a124fb1c1ebe267c1a1e49b236157f57e} 
+\mbox{\hyperlink{classCell}{Cell}} Cell\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_a1c8c688f186203a8a5a494853319f2cc}\index{Cell@{Cell}!display@{display}}
+\index{display@{display}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{classCell_a1c8c688f186203a8a5a494853319f2cc} 
+char Cell\+::display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_a9bc1f8346945d3af348301783bcd4023}\index{Cell@{Cell}!evolve@{evolve}}
+\index{evolve@{evolve}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{evolve()}{evolve()}}
+{\footnotesize\ttfamily \label{classCell_a9bc1f8346945d3af348301783bcd4023} 
+void Cell\+::evolve (\begin{DoxyParamCaption}\item[{int}]{live\+\_\+neighbors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Evolves the underlying cell and mutates Fredkin→\+Conway if needed. 
+
+\Hypertarget{classCell_a8c934c2810095d13296b7976ee389b41}\index{Cell@{Cell}!is\_neighbor@{is\_neighbor}}
+\index{is\_neighbor@{is\_neighbor}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{is\_neighbor()}{is\_neighbor()}}
+{\footnotesize\ttfamily \label{classCell_a8c934c2810095d13296b7976ee389b41} 
+bool Cell\+::is\+\_\+neighbor (\begin{DoxyParamCaption}\item[{int}]{dr}{, }\item[{int}]{dc}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_aab521a9dfdd11440797be445495d0555}\index{Cell@{Cell}!operator=@{operator=}}
+\index{operator=@{operator=}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classCell_aab521a9dfdd11440797be445495d0555} 
+\mbox{\hyperlink{classCell}{Cell}} \& Cell\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classCell}{Cell}} \&\&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [noexcept]}}
+
+\Hypertarget{classCell_ac1c53fcae0c0be453d0312310ed80fc9}\index{Cell@{Cell}!operator=@{operator=}}
+\index{operator=@{operator=}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classCell_ac1c53fcae0c0be453d0312310ed80fc9} 
+\mbox{\hyperlink{classCell}{Cell}} \& Cell\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classCell}{Cell}} \&}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\Hypertarget{classCell_aba0c745a83fa7cf5e750b61339b52a6b}\index{Cell@{Cell}!update\_neighbors@{update\_neighbors}}
+\index{update\_neighbors@{update\_neighbors}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{update\_neighbors()}{update\_neighbors()}}
+{\footnotesize\ttfamily \label{classCell_aba0c745a83fa7cf5e750b61339b52a6b} 
+template$<$typename Grid\+Type$>$ \\
+void Cell\+::update\+\_\+neighbors (\begin{DoxyParamCaption}\item[{const vector$<$ vector$<$ Grid\+Type $>$ $>$ \&}]{grid}{, }\item[{vector$<$ vector$<$ int $>$ $>$ \&}]{count\+\_\+grid}{, }\item[{int}]{row}{, }\item[{int}]{col}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classCell_af8bb6306c15463d257e4775095b2f273}\index{Cell@{Cell}!\_p@{\_p}}
+\index{\_p@{\_p}!Cell@{Cell}}
+\doxysubsubsection{\texorpdfstring{\_p}{\_p}}
+{\footnotesize\ttfamily \label{classCell_af8bb6306c15463d257e4775095b2f273} 
+\mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}}\texorpdfstring{$\ast$}{*} Cell\+::\+\_\+p\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Life_8hpp}{Life.\+hpp}}\end{DoxyCompactItemize}

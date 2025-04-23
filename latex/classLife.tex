@@ -1,0 +1,131 @@
+\doxysection{Life\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{classLife}{}\label{classLife}\index{Life$<$ T $>$@{Life$<$ T $>$}}
+
+
+Generic grid-\/based Game of \doxylink{classLife}{Life} simulation engine.  
+
+
+
+
+{\ttfamily \#include $<$Life.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLife_a95b55e5de5ddaf332930a68cda35f87b}{Life}} (size\+\_\+t rows, size\+\_\+t cols)
+\item 
+void \mbox{\hyperlink{classLife_a96bbaf04a03c527bbecd2a99441d2e6a}{eval}} ()
+\begin{DoxyCompactList}\small\item\em Performs one full generation step\+: \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLife_ab53da75756aca3360fadae37e74f06b4}{initialize\+\_\+cell}} (size\+\_\+t i, size\+\_\+t j, const T \&cell)
+\begin{DoxyCompactList}\small\item\em Sets a cell at position (i,j). Offset due to padding. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLife_a35d505fd771b3a915c81c71abc4fb0b1}{print\+\_\+generation}} (int gen) const
+\begin{DoxyCompactList}\small\item\em Prints the current grid and total population count. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ vector$<$ T $>$ $>$ \mbox{\hyperlink{classLife_a4572483aa4fa9d66e14463e22abcd19c}{\+\_\+prev\+\_\+grid}}
+\item 
+vector$<$ vector$<$ T $>$ $>$ \mbox{\hyperlink{classLife_a47a1e38de2bd89f937afca66dcea2e29}{\+\_\+next\+\_\+grid}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classLife_a9a39d930d18e04aeb39e2ddc8869713d}{\+\_\+rows}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classLife_a020602db2af447a8025685d7acd07c19}{\+\_\+cols}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class Life$<$ T $>$}
+Generic grid-\/based Game of \doxylink{classLife}{Life} simulation engine. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The cell type (\doxylink{classConwayCell}{Conway\+Cell}, \doxylink{classFredkinCell}{Fredkin\+Cell}, or \doxylink{classCell}{Cell} wrapper). \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classLife_a95b55e5de5ddaf332930a68cda35f87b}\index{Life$<$ T $>$@{Life$<$ T $>$}!Life@{Life}}
+\index{Life@{Life}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Life()}{Life()}}
+{\footnotesize\ttfamily \label{classLife_a95b55e5de5ddaf332930a68cda35f87b} 
+template$<$typename T$>$ \\
+\mbox{\hyperlink{classLife}{Life}}$<$ T $>$\mbox{\hyperlink{classLife}{\+::\+Life}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{rows}{, }\item[{size\+\_\+t}]{cols}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classLife_a96bbaf04a03c527bbecd2a99441d2e6a}\index{Life$<$ T $>$@{Life$<$ T $>$}!eval@{eval}}
+\index{eval@{eval}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{eval()}{eval()}}
+{\footnotesize\ttfamily \label{classLife_a96bbaf04a03c527bbecd2a99441d2e6a} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::eval (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Performs one full generation step\+: 
+
+
+\begin{DoxyItemize}
+\item count neighbors
+\item evolve all cells 
+\end{DoxyItemize}\Hypertarget{classLife_ab53da75756aca3360fadae37e74f06b4}\index{Life$<$ T $>$@{Life$<$ T $>$}!initialize\_cell@{initialize\_cell}}
+\index{initialize\_cell@{initialize\_cell}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{initialize\_cell()}{initialize\_cell()}}
+{\footnotesize\ttfamily \label{classLife_ab53da75756aca3360fadae37e74f06b4} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::initialize\+\_\+cell (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{i}{, }\item[{size\+\_\+t}]{j}{, }\item[{const T \&}]{cell}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets a cell at position (i,j). Offset due to padding. 
+
+\Hypertarget{classLife_a35d505fd771b3a915c81c71abc4fb0b1}\index{Life$<$ T $>$@{Life$<$ T $>$}!print\_generation@{print\_generation}}
+\index{print\_generation@{print\_generation}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{print\_generation()}{print\_generation()}}
+{\footnotesize\ttfamily \label{classLife_a35d505fd771b3a915c81c71abc4fb0b1} 
+template$<$typename T$>$ \\
+void \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::print\+\_\+generation (\begin{DoxyParamCaption}\item[{int}]{gen}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prints the current grid and total population count. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classLife_a020602db2af447a8025685d7acd07c19}\index{Life$<$ T $>$@{Life$<$ T $>$}!\_cols@{\_cols}}
+\index{\_cols@{\_cols}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_cols}{\_cols}}
+{\footnotesize\ttfamily \label{classLife_a020602db2af447a8025685d7acd07c19} 
+template$<$typename T$>$ \\
+size\+\_\+t \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::\+\_\+cols\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classLife_a47a1e38de2bd89f937afca66dcea2e29}\index{Life$<$ T $>$@{Life$<$ T $>$}!\_next\_grid@{\_next\_grid}}
+\index{\_next\_grid@{\_next\_grid}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_next\_grid}{\_next\_grid}}
+{\footnotesize\ttfamily \label{classLife_a47a1e38de2bd89f937afca66dcea2e29} 
+template$<$typename T$>$ \\
+vector$<$vector$<$T$>$ $>$ \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::\+\_\+next\+\_\+grid\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classLife_a4572483aa4fa9d66e14463e22abcd19c}\index{Life$<$ T $>$@{Life$<$ T $>$}!\_prev\_grid@{\_prev\_grid}}
+\index{\_prev\_grid@{\_prev\_grid}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_prev\_grid}{\_prev\_grid}}
+{\footnotesize\ttfamily \label{classLife_a4572483aa4fa9d66e14463e22abcd19c} 
+template$<$typename T$>$ \\
+vector$<$vector$<$T$>$ $>$ \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::\+\_\+prev\+\_\+grid\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{classLife_a9a39d930d18e04aeb39e2ddc8869713d}\index{Life$<$ T $>$@{Life$<$ T $>$}!\_rows@{\_rows}}
+\index{\_rows@{\_rows}!Life$<$ T $>$@{Life$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_rows}{\_rows}}
+{\footnotesize\ttfamily \label{classLife_a9a39d930d18e04aeb39e2ddc8869713d} 
+template$<$typename T$>$ \\
+size\+\_\+t \mbox{\hyperlink{classLife}{Life}}$<$ T $>$\+::\+\_\+rows\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Life_8hpp}{Life.\+hpp}}\end{DoxyCompactItemize}

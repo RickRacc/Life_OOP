@@ -1,0 +1,128 @@
+\doxysection{Conway\+Cell Class Reference}
+\hypertarget{classConwayCell}{}\label{classConwayCell}\index{ConwayCell@{ConwayCell}}
+
+
+Classic Conway cell using 8-\/neighbor rules.  
+
+
+
+
+{\ttfamily \#include $<$Life.\+hpp$>$}
+
+Inheritance diagram for Conway\+Cell\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classConwayCell}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f}{Conway\+Cell}} (bool alive=false)
+\item 
+\mbox{\hyperlink{classConwayCell}{Conway\+Cell}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classConwayCell_ac6fe4cb99bdde233593dbcb528b61a25}{clone}} () const override
+\begin{DoxyCompactList}\small\item\em Clone this cell polymorphically. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConwayCell_a62ed3a1445b136e07fc0ff1dd5880923}{evolve}} (int live\+\_\+neighbors) override
+\begin{DoxyCompactList}\small\item\em Applies cell-\/specific evolution rules. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classConwayCell_af135931ddf0ff3dd398b7f85d2392e9d}{is\+\_\+neighbor}} (int dr, int dc) const override
+\begin{DoxyCompactList}\small\item\em Checks if a direction (dr, dc) is a valid neighbor. \end{DoxyCompactList}\item 
+char \mbox{\hyperlink{classConwayCell_aa730e3948f9a4f026109c0cbed464012}{display}} () const override
+\begin{DoxyCompactList}\small\item\em Returns a character representing the current cell state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classAbstractCell_aae2a2ca3953e809036219dc3f0389077}{Abstract\+Cell}} (bool alive=false)
+\item 
+virtual \mbox{\hyperlink{classAbstractCell_a6d8ce67b93514f1fc2f564a7bb09cf85}{\texorpdfstring{$\sim$}{\string~}\+Abstract\+Cell}} ()=default
+\item 
+{\footnotesize template$<$typename Grid\+Type$>$ }\\void \mbox{\hyperlink{classAbstractCell_a649a4975904c1f32a4ec47682e93cb5e}{update\+\_\+neighbors}} (const vector$<$ vector$<$ Grid\+Type $>$ $>$ \&grid, vector$<$ vector$<$ int $>$ $>$ \&count\+\_\+grid, int row, int col) const
+\begin{DoxyCompactList}\small\item\em Updates neighbor count for valid neighbor directions. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classAbstractCell_a83a30c72ccda54262535bfa15ff1e43a}{should\+\_\+mutate}} () const
+\begin{DoxyCompactList}\small\item\em Fredkin-\/specific\+: should this cell mutate into Conway? \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}}}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classAbstractCell_acc1709ac6a09244b76c38dca45577111}{\+\_\+alive}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classic Conway cell using 8-\/neighbor rules. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f}\index{ConwayCell@{ConwayCell}!ConwayCell@{ConwayCell}}
+\index{ConwayCell@{ConwayCell}!ConwayCell@{ConwayCell}}
+\doxysubsubsection{\texorpdfstring{ConwayCell()}{ConwayCell()}}
+{\footnotesize\ttfamily \label{classConwayCell_a9ede00d4db3a5a0ab4bae8c36b1ce01f} 
+Conway\+Cell\+::\+Conway\+Cell (\begin{DoxyParamCaption}\item[{bool}]{alive}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classConwayCell_ac6fe4cb99bdde233593dbcb528b61a25}\index{ConwayCell@{ConwayCell}!clone@{clone}}
+\index{clone@{clone}!ConwayCell@{ConwayCell}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \label{classConwayCell_ac6fe4cb99bdde233593dbcb528b61a25} 
+\mbox{\hyperlink{classConwayCell}{Conway\+Cell}} \texorpdfstring{$\ast$}{*} Conway\+Cell\+::clone (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone this cell polymorphically. 
+
+
+
+Implements \mbox{\hyperlink{classAbstractCell_aff625f2dcd4561f0c3bd27186fe03841}{Abstract\+Cell}}.
+
+\Hypertarget{classConwayCell_aa730e3948f9a4f026109c0cbed464012}\index{ConwayCell@{ConwayCell}!display@{display}}
+\index{display@{display}!ConwayCell@{ConwayCell}}
+\doxysubsubsection{\texorpdfstring{display()}{display()}}
+{\footnotesize\ttfamily \label{classConwayCell_aa730e3948f9a4f026109c0cbed464012} 
+char Conway\+Cell\+::display (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns a character representing the current cell state. 
+
+
+
+Implements \mbox{\hyperlink{classAbstractCell_ae0f08b240e7d8f3fdc883d05662d3d51}{Abstract\+Cell}}.
+
+\Hypertarget{classConwayCell_a62ed3a1445b136e07fc0ff1dd5880923}\index{ConwayCell@{ConwayCell}!evolve@{evolve}}
+\index{evolve@{evolve}!ConwayCell@{ConwayCell}}
+\doxysubsubsection{\texorpdfstring{evolve()}{evolve()}}
+{\footnotesize\ttfamily \label{classConwayCell_a62ed3a1445b136e07fc0ff1dd5880923} 
+void Conway\+Cell\+::evolve (\begin{DoxyParamCaption}\item[{int}]{live\+\_\+neighbors}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Applies cell-\/specific evolution rules. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em live\+\_\+neighbors} & Number of live neighbors. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classAbstractCell_a8bbf21a078913b58782aef24fbb2a42d}{Abstract\+Cell}}.
+
+\Hypertarget{classConwayCell_af135931ddf0ff3dd398b7f85d2392e9d}\index{ConwayCell@{ConwayCell}!is\_neighbor@{is\_neighbor}}
+\index{is\_neighbor@{is\_neighbor}!ConwayCell@{ConwayCell}}
+\doxysubsubsection{\texorpdfstring{is\_neighbor()}{is\_neighbor()}}
+{\footnotesize\ttfamily \label{classConwayCell_af135931ddf0ff3dd398b7f85d2392e9d} 
+bool Conway\+Cell\+::is\+\_\+neighbor (\begin{DoxyParamCaption}\item[{int}]{dr}{, }\item[{int}]{dc}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Checks if a direction (dr, dc) is a valid neighbor. 
+
+
+
+Implements \mbox{\hyperlink{classAbstractCell_ae1248a23887bfd6e35fd36c5335d76df}{Abstract\+Cell}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{Life_8hpp}{Life.\+hpp}}\end{DoxyCompactItemize}

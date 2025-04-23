@@ -1,0 +1,21 @@
+\doxysection{Life.\+hpp File Reference}
+\hypertarget{Life_8hpp}{}\label{Life_8hpp}\index{Life.hpp@{Life.hpp}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$utility$>$}\newline
+{\ttfamily \#include $<$cctype$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classAbstractCell}{Abstract\+Cell}}
+\begin{DoxyCompactList}\small\item\em Abstract base class for all cell types (e.\+g., \doxylink{classConwayCell}{Conway\+Cell}, \doxylink{classFredkinCell}{Fredkin\+Cell}). \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classConwayCell}{Conway\+Cell}}
+\begin{DoxyCompactList}\small\item\em Classic Conway cell using 8-\/neighbor rules. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classFredkinCell}{Fredkin\+Cell}}
+\begin{DoxyCompactList}\small\item\em Fredkin cell with orthogonal neighbor logic and aging/mutation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classCell}{Cell}}
+\begin{DoxyCompactList}\small\item\em Polymorphic wrapper for cells. Supports Conway or Fredkin with mutation. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{classLife}{Life$<$ T $>$}}
+\begin{DoxyCompactList}\small\item\em Generic grid-\/based Game of \doxylink{classLife}{Life} simulation engine. \end{DoxyCompactList}\end{DoxyCompactItemize}
