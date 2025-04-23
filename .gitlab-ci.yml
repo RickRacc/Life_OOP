@@ -1,0 +1,21 @@
+before_script:
+    - date
+    - uname -p
+    - uname -s
+    - printenv | sort
+
+gcc:
+    image: gpdowning/gcc-intel
+    script:
+    - cat Makefile
+    - make versions
+    - ls -al
+    - make ../cs371p-life-tests
+    - ls -al ../cs371p-life-tests/
+    - ls -al
+    - make test
+    - ls -al
+    - make run
+    - ls -al
+    - make check
+    - ls -al
